@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Den Haag Parking API
+  version: "1.0"
+paths:
+  /check-in:
+    post:
+      summary: Register a car in a parking zone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                license_plate:
+                  type: string
+                zone_id:
+                  type: string
+      responses:
+        '200':
+          description: Checked in
+  /check-out:
+    post:
+      summary: Checkout a parked car
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                license_plate:
+                  type: string
+      responses:
+        '200':
+          description: Checked out
+

@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: uvicorn parking_controller:app --host 0.0.0.0 --port 8000
+
+  digid:
+    build:
+      context: ./integration
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./integration:/app
+    command: uvicorn digid_mock:app --host 0.0.0.0 --port 8000
+
